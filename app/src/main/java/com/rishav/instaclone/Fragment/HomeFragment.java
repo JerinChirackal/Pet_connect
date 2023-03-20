@@ -1,5 +1,6 @@
 package com.rishav.instaclone.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,9 +22,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rishav.instaclone.Adapter.PostAdapter;
 import com.rishav.instaclone.Adapter.StoryAdapter;
+import com.rishav.instaclone.DonateDash;
 import com.rishav.instaclone.Model.Post;
 import com.rishav.instaclone.Model.Story;
 import com.rishav.instaclone.R;
+import com.rishav.instaclone.Veterinarian;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +36,8 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private PostAdapter postAdapter;
     private List<Post> postList;
+    ImageButton sendMessageBtn;
+    ImageButton moveDonateBtn;
 
     private RecyclerView recyclerView_story;
     private StoryAdapter storyAdapter;
@@ -46,6 +52,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -55,6 +62,8 @@ public class HomeFragment extends Fragment {
         postList = new ArrayList<>();
         postAdapter = new PostAdapter(getContext() , postList);
         recyclerView.setAdapter(postAdapter);
+        sendMessageBtn = (ImageButton) view.findViewById(R.id.inbox_id);
+        moveDonateBtn = (ImageButton) view.findViewById(R.id.donate_id);
 
         recyclerView_story = view.findViewById(R.id.recycler_view_story);
         recyclerView_story.setHasFixedSize(true);
@@ -66,10 +75,33 @@ public class HomeFragment extends Fragment {
         recyclerView_story.setAdapter(storyAdapter);
 
         progressBar = view.findViewById(R.id.progress_circular);
-
+        inbox();
+        donate();
         checkFollowing();
 
         return view;
+    }
+    public void inbox(){
+        sendMessageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(),Veterinarian.class));
+            //    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            //    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+             //   fragmentTransaction.replace(R.id.fragment_container, Veterinarian.class);
+             //   fragmentTransaction.addToBackStack(null);
+             //   fragmentTransaction.commit();
+            }
+        });
+
+    }
+    public void donate(){
+        moveDonateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), DonateDash.class));
+            }
+        });
     }
 
     private void checkFollowing() {

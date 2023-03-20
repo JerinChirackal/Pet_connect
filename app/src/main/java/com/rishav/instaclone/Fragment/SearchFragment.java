@@ -141,7 +141,8 @@ public class SearchFragment extends Fragment {
 
         recyclerView.setVisibility(View.VISIBLE);
 
-        Query query = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("username").startAt(s)
+        Query query = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("username")
+                .startAt(s)
                 .endAt(s + "\uf8ff");
 
         query.addValueEventListener(new ValueEventListener() {

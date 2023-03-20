@@ -7,12 +7,18 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".StartActivity"
-    android:padding="12dp">
+    android:padding="12dp"
+    >
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:src="@drawable/logo"/>
+        android:layout_width="421dp"
+        android:layout_height="294dp"
+        android:src="@drawable/background" />
+
+    <ImageView
+        android:layout_width="398dp"
+        android:layout_height="86dp"
+        android:src="@drawable/logo" />
 
     <Button
         android:layout_width="match_parent"

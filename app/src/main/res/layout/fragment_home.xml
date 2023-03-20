@@ -28,11 +28,22 @@
                     android:layout_marginLeft="-20dp"
                     android:src="@drawable/logo" />
 
-                <ImageView
+                <ImageButton
+                    android:id="@+id/inbox_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_inbox"
                     android:layout_marginRight="10dp"
+                    android:backgroundTint="#FAFAFA"
+                    android:layout_alignParentEnd="true"/>
+
+                <ImageButton
+                    android:id="@+id/donate_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_inbox"
+                    android:layout_marginRight="60dp"
+                    android:backgroundTint="#FAFAFA"
                     android:layout_alignParentEnd="true"/>
 
             </RelativeLayout>

@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                             selecterFragment = new HomeFragment();
                             break;
 
+
                         case R.id.nav_search:
                             selecterFragment = new SearchFragment();
                             break;
